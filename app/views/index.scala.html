@@ -9,12 +9,32 @@
  * argument is a `String` with the title of the page, the second
  * argument is an `Html` object containing the body of the page.
  *@
-@main("Welcome to Play") {
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/style.css")">
 
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
-     *@
-    @welcome(message, style = "java")
-
-}
+        <title>MyPage</title>
+    </head>
+    <body>
+        <form class="login">
+            <div class="container">
+                <div class="hero">
+                    <span class="login_title">
+                        <h2><strong>Bienvenido</strong></h2>
+                    </span>
+                        <!--<label for="uname"><b>Username</b></label>-->
+                    <input type="text" placeholder="Username" name="uname" required>
+                        <!--<label for="psw"><b>Password</b></label>-->
+                    <input type="password" placeholder="Password" name="psw" required>
+                    <button class="sub" type="submit"><b>LOGIN</b></button>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>
