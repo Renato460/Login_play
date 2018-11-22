@@ -43,6 +43,7 @@ span.login_title{
 }
 input{
     margin: 2em 1em;
+    border: none;
     border-bottom: solid;
     border-width: 1px;
     background-color: transparent;
