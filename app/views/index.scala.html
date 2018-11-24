@@ -2,7 +2,10 @@
  * This template takes a single argument, a String containing a
  * message to display.
  *@
-@(message: String)
+@(userLogin : UserModel)
+@import helper._
+
+
 
 @*
  * Call the `main` template with two arguments. The first
@@ -10,20 +13,26 @@
  * argument is an `Html` object containing the body of the page.
  *@
 @main("Login"){
-    <body>
-        <form class="login">
-            <div class="container">
-                <div class="hero">
-                    <span class="login_title">
-                        <h2><strong>Bienvenido</strong></h2>
-                    </span>
-                        <!--<label for="uname"><b>Username</b></label>-->
-                    <input type="text" placeholder="Username" name="uname" required>
-                        <!--<label for="psw"><b>Password</b></label>-->
-                    <input type="password" placeholder="Password" name="psw" required>
-                    <button class="sub" type="submit"><b>LOGIN</b></button>
-                </div>
+    @helper.form(action = routes.HomeController.user(), 'class -> "login"){
+        <div class="container">
+            <div class="hero">
+                <span class="login_title">
+                    <h2><strong>Bienvenido</strong></h2>
+                </span>
+                    @helper.inputText(userLogin("username"))
+
+
+
+
+
+
+
+                    <!--<label for="uname"><b>Username</b></label>-->
+                <!--<input type="text" placeholder="Username" name="uname" required>
+                    <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Password" name="psw" required>-->
+                <button class="sub" type="submit"><b>LOGIN</b></button>
             </div>
-        </form>
-    </body>
+        </div>
+    }
 }
