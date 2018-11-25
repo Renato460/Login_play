@@ -1,5 +1,7 @@
 package Model;
 
+
+
 public class UserModel {
     private String nombre, apellidos, mail, fono, direccion, pass;
 

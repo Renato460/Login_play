@@ -1,13 +1,12 @@
 package controllers;
 
-import Model.UserModel;
+import Model.LoginModel;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.*;
-
 import views.html.*;
-
 import javax.inject.Inject;
+
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -22,16 +21,23 @@ public class HomeController extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      *
      */
+
+    private final Form<LoginModel> userLogin;
+
     @Inject
-    FormFactory formFactory;
+    public HomeController(FormFactory formFactory) {
+        this.userLogin = formFactory.form(LoginModel.class);
+    }
+
 
     public Result index() {
-        Form<UserModel> userLogin = formFactory.form(UserModel.class);
+
+        //ArrayList<String> data = new ArrayList<>();
         return ok(index.render(userLogin));
     }
 
     public Result user() {
-        Form<UserModel> userForm = formFactory.form(UserModel.class);
+        //Form<UserModel> userForm = formFactory.form(UserModel.class);
         return TODO;
     }
 }
