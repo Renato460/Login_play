@@ -8,8 +8,8 @@
                 <span class="login_title">
                     <h2><strong>Bienvenido</strong></h2>
                 </span>
-                    @helper.inputText(userLogin("username"))
-                    @helper.inputPassword(userLogin("password"))
+                    @helper.inputText(userLogin("username"), 'label -> "hidden")
+                    @helper.inputPassword(userLogin("password") )
 
 
 
@@ -21,7 +21,7 @@
                 <!--<input type="text" placeholder="Username" name="uname" required>
                     <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Password" name="psw" required>-->
-                <button class="sub" type="submit"><b>LOGIN</b></button>
+                <button class="btn btn-secondary" type="submit"><b>LOGIN</b></button>
             </div>
         </div>
     }
