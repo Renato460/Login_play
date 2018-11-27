@@ -1,9 +1,23 @@
 package Model;
 
 
+import java.util.*;
+import javax.persistence.*;
+import io.ebean.*;
 
-public class UserModel {
-    private String nombre, apellidos, mail, fono, direccion, pass;
+import play.data.format.*;
+import play.data.validation.*;
+
+@Entity
+public class UserModel extends Model {
+
+    private String nombre;
+    @Id
+    private String pass;
+    private String apellidos;
+    private String mail;
+    private String fono;
+    private String direccion;
 
     public UserModel(){}
 

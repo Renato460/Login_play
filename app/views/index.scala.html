@@ -8,17 +8,12 @@
                 <span class="login_title">
                     <h2><strong>Bienvenido</strong></h2>
                 </span>
-                    @helper.inputText(userLogin("username"), 'label -> "hidden")
-                    @helper.inputPassword(userLogin("password") )
-
-
-
-
-
+                    @helper.inputText(userLogin("username"), 'placeholder -> "Username")
+                    @helper.inputPassword(userLogin("password"), 'placeholder -> "Password" )
 
 
                     <!--<label for="uname"><b>Username</b></label>-->
-                <!--<input type="text" placeholder="Username" name="uname" required>
+                <!--<input type="text" placeholder="Username" name="name" required>
                     <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Password" name="psw" required>-->
                 <button class="btn btn-secondary" type="submit"><b>LOGIN</b></button>

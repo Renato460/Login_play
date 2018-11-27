@@ -17,6 +17,10 @@ div.container {
     align-items: center
 }
 
+label{
+    display: none;
+}
+
 div.hero{
     padding: 1em 2em 2em 2em;
     height: auto;
