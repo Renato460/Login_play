@@ -37,7 +37,7 @@ public class HomeController extends Controller {
     }
 
     public Result user() {
-        //Form<UserModel> userForm = formFactory.form(UserModel.class);
+
         return TODO;
     }
 }
