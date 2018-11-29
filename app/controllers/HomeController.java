@@ -22,22 +22,26 @@ public class HomeController extends Controller {
      *
      */
 
-    private final Form<LoginModel> userLogin;
-
+    private Form<LoginModel> userLogin;
     @Inject
-    public HomeController(FormFactory formFactory) {
+    private FormFactory formFactory;
+    /*@Inject
+    public HomeController() {
         this.userLogin = formFactory.form(LoginModel.class);
-    }
+    }*/
 
 
     public Result index() {
-
+        this.userLogin = formFactory.form(LoginModel.class);
         //ArrayList<String> data = new ArrayList<>();
         return ok(index.render(userLogin));
     }
 
     public Result user() {
+        Form<LoginModel> userLogin = formFactory.form(LoginModel.class).bindFromRequest();
+        LoginModel loginUser =  userLogin.get();
+        //String name = userLogin.field("password");
 
-        return TODO;
+        return ok(user.render(userLogin));
     }
 }
