@@ -1,6 +1,7 @@
 package controllers;
 
 import Model.LoginModel;
+import Model.UserModel;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.*;
@@ -40,8 +41,13 @@ public class HomeController extends Controller {
     public Result user() {
         Form<LoginModel> userLogin = formFactory.form(LoginModel.class).bindFromRequest();
         LoginModel loginUser =  userLogin.get();
-        //String name = userLogin.field("password");
-
-        return ok(user.render(userLogin));
+        String password = loginUser.getPassword();
+        String name = loginUser.getName();
+        boolean result = UserModel.match(password, name);
+        if (result){
+        return ok(user.render("verdadero"));
+        }else {
+            return badRequest("ERROR");
+        }
     }
 }

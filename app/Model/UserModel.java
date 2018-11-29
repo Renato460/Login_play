@@ -10,11 +10,13 @@ import play.data.validation.*;
 
 @Entity
 public class UserModel extends Model {
-
+    @Constraints.Required
     private String nombre;
     @Id
     private String pass;
+    @Constraints.Required
     private String apellidos;
+    @Constraints.Required
     private String mail;
     private String fono;
     private String direccion;
@@ -29,6 +31,18 @@ public class UserModel extends Model {
         this.fono = fono;
         this.direccion = direccion;
         this.pass = pass;
+    }
+
+    public static Finder<String,UserModel> find = new Finder<>(UserModel.class);
+
+    public static boolean match (String pass, String name){
+        List<UserModel> users = UserModel.find.all();
+        for (UserModel user : users) {
+            if (pass.equals(user.getPass()) || name.equals(user.getNombre())){
+                return true;
+            }
+        }
+        return false;
     }
 
     public String getNombre() {
