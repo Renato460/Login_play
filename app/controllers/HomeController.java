@@ -34,7 +34,6 @@ public class HomeController extends Controller {
 
     public Result index() {
         this.userLogin = formFactory.form(LoginModel.class);
-        //ArrayList<String> data = new ArrayList<>();
         return ok(index.render(userLogin));
     }
 
