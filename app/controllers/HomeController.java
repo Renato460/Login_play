@@ -24,13 +24,14 @@ public class HomeController extends Controller {
      */
 
     private Form<LoginModel> userLogin;
+    private Form<UserModel> existentUser;
+
     @Inject
     private FormFactory formFactory;
     /*@Inject
     public HomeController() {
         this.userLogin = formFactory.form(LoginModel.class);
     }*/
-
 
     public Result index() {
         this.userLogin = formFactory.form(LoginModel.class);
@@ -42,11 +43,17 @@ public class HomeController extends Controller {
         LoginModel loginUser =  userLogin.get();
         String password = loginUser.getPassword();
         String name = loginUser.getName();
-        boolean result = UserModel.match(password, name);
-        if (result){
-        return ok(user.render("verdadero"));
+        UserModel userMod = UserModel.match(password, name);
+        if (userMod != null){
+            this.existentUser =formFactory.form(UserModel.class);
+            session(loginUser.getName());
+            return ok(user.render(existentUser, userMod));
         }else {
             return badRequest("ERROR");
         }
+    }
+
+    public Result update(){
+        return TODO;
     }
 }

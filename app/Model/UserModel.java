@@ -35,14 +35,14 @@ public class UserModel extends Model {
 
     public static Finder<String,UserModel> find = new Finder<>(UserModel.class);
 
-    public static boolean match (String pass, String name){
+    public static UserModel match (String pass, String name){
         List<UserModel> users = UserModel.find.all();
         for (UserModel user : users) {
-            if (pass.equals(user.getPass()) || name.equals(user.getNombre())){
-                return true;
+            if (pass.equals(user.getPass()) && name.equals(user.getNombre())){
+                return user;
             }
         }
-        return false;
+        return null;
     }
 
     public String getNombre() {

@@ -1,8 +1,13 @@
-@import Model.LoginModel
+@import Model._
+@import helper._
+
+
 
 @(userLogin : Form[LoginModel])
 @main("Login"){
+
     @helper.form(action = routes.HomeController.user(), 'class -> "login"){
+
         <div class="container">
             <div class="hero">
                 <span class="login_title">
@@ -11,7 +16,6 @@
                     @helper.inputText(userLogin("name"), 'placeholder -> "Username")
                     @helper.inputPassword(userLogin("password"), 'placeholder -> "Password" )
 
-                <input type="password" placeholder="Password" name="psw" required>-->
                 <button class="btn btn-secondary" type="submit"><b>LOGIN</b></button>
             </div>
         </div>
