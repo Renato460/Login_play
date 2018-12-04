@@ -1,15 +1,22 @@
 @import Model._
 @import helper._
-@(existentUser : Form[UserModel])(user : UserModel)
+@(existentUser : Form[UserModel])(nombre : String)(apellidos : String)(pass : String)(email: String)(direccion: String)(fono: String)
+
 @main("user"){
-@String nombre = user.getNombre()
     <div class="container">
         <div class="hero">
-        @helper.form(action = routes.HomeController.update(),'class -> "login"){
-            @helper.inputText(existentUser("nombre"), 'placeholder ->" @nombre")
-            @helper.inputText(existentUser("apellidos"), 'placeholder -> "@user.getApellidos()")
-            <button type="submit" class="btn btn-secondary">Actualizar datos</button>
-        }
+
+            @helper.form(action = routes.HomeController.update(),'class -> "user"){
+                <div class="row">
+                @helper.inputText(existentUser("nombre"), 'placeholder -> nombre, 'class -> "col-sm-6")
+                @helper.inputText(existentUser("apellidos"), 'placeholder -> apellidos, 'class -> "col-sm-6")
             </div>
+                @helper.inputText(existentUser("pass"), 'placeholder -> pass)
+                @helper.inputText(existentUser("mail"), 'placeholder -> email)
+                @helper.inputText(existentUser("direccion"), 'placeholder -> direccion)
+                @helper.inputText(existentUser("fono"), 'placeholder -> fono)
+                <button type="submit" class="btn btn-secondary">Actualizar datos</button>
+            }
+        </div>
 </div>
 }

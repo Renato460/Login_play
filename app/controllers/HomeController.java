@@ -47,9 +47,10 @@ public class HomeController extends Controller {
         if (userMod != null){
             this.existentUser =formFactory.form(UserModel.class);
             session(loginUser.getName());
-            return ok(user.render(existentUser, userMod));
+            return ok(user.render(existentUser, userMod.getNombre(), userMod.getApellidos(),
+            userMod.getPass(),userMod.getMail(), userMod.getDireccion(), userMod.getFono()));
         }else {
-            return badRequest("ERROR");
+            return ok(index.render(this.userLogin));
         }
     }
 
