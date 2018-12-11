@@ -54,7 +54,16 @@ public class HomeController extends Controller {
         }
     }
 
+    public Result users(){
+        return ok(users.render());
+    }
+
     public Result update(){
+
         return TODO;
+    }
+
+    public Result register(){
+        return ok(register.render());
     }
 }

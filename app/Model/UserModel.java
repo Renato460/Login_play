@@ -45,6 +45,11 @@ public class UserModel extends Model {
         return null;
     }
 
+    public static List<UserModel> matchAll (){
+        List<UserModel> listUsers = UserModel.find.all();
+        return listUsers;
+    }
+
     public String getNombre() {
         return nombre;
     }
