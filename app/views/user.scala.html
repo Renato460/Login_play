@@ -4,17 +4,53 @@
 
 @main("user"){
     <div class="container">
-        <div class="hero">
+        <div class="row cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <header class="masthead mb-auto col-12">
+                <div class="inner">
+                    <h3 class="masthead-brand">@nombre</h3>
+                    <nav class="nav nav-masthead justify-content-center">
+                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">Contact</a>
+                    </nav>
+                </div>
+            </header>
+        </div>
 
-            @helper.form(action = routes.HomeController.update(),'class -> "user"){
-                <div class="row">
-                @helper.inputText(existentUser("nombre"), 'placeholder -> nombre, 'class -> "col-sm-6")
-                @helper.inputText(existentUser("apellidos"), 'placeholder -> apellidos, 'class -> "col-sm-6")
-            </div>
-                @helper.inputText(existentUser("pass"), 'placeholder -> pass)
-                @helper.inputText(existentUser("mail"), 'placeholder -> email)
-                @helper.inputText(existentUser("direccion"), 'placeholder -> direccion)
-                @helper.inputText(existentUser("fono"), 'placeholder -> fono)
+        <div class="row cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            @helper.form(action = routes.HomeController.update(),'class -> "user col-12"){
+                <div class="form-row">
+                    <div class="col">
+                        <label class="visi" for="nombre">Nombre</label>
+                        @helper.inputText(existentUser("nombre"), 'placeholder -> nombre, 'class -> "form-control", '_showConstraints->false)
+                    </div>
+                    <div class="col">
+                        <label class="visi" for="apellidos">Apellidos</label>
+                        @helper.inputText(existentUser("apellidos"), 'placeholder -> apellidos, 'class -> "form-control", '_showConstraints->false)
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label class="visi" for="pass">Password</label>
+                        @helper.inputText(existentUser("pass"), 'placeholder -> pass, 'class -> "form-control")
+                    </div>
+                    <div class="col">
+                        <label class="visi" for="mail">Email</label>
+                        @helper.inputText(existentUser("mail"), 'placeholder -> email, 'class -> "form-control", '_showConstraints->false)
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label class="visi" for="direccion">Dirección</label>
+                        @helper.inputText(existentUser("direccion"), 'placeholder -> direccion, 'class -> "form-control")
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label class="visi" for="fono">Teléfono</label>
+                        @helper.inputText(existentUser("fono"), 'placeholder -> fono, 'class -> "form-control")
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-secondary">ACTUALIZAR</button>
             }
         </div>

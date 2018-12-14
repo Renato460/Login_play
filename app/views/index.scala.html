@@ -6,19 +6,36 @@
 @(userLogin : Form[LoginModel])
 @main("Login"){
 
-    @helper.form(action = routes.HomeController.user(), 'class -> "login"){
-
+    @helper.form(action = routes.HomeController.user(), 'class -> "login form-signin text-center"){
         <div class="container">
             <div class="hero">
                 <span class="login_title">
-                    <h2><strong>Bienvenido</strong></h2>
+                    <h1 class="h2 mb-3 font-weight-normal">Bienvenido</h1>
                 </span>
-                    @helper.inputText(userLogin("name"), 'placeholder -> "Username")
-                    @helper.inputPassword(userLogin("password"), 'placeholder -> "Password" )
+                    @helper.inputText(userLogin("name"), '_label-> false, 'placeholder -> "Username", 'class->"form-control")
+                    @helper.inputPassword(userLogin("password"),'_label->"sr-only", 'placeholder -> "Password", 'class->"form-control")
 
-                <button class="btn btn-secondary" type="submit"><b>LOGIN</b></button>
-                <a class="btn btn-outline-secondary" href="/register"><b>REGISTER</b></a>
+                <button class="btn btn-secondary btn-lg btn-block" type="submit"><b>LOGIN</b></button>
+                <a class="btn btn-lg btn-outline-secondary btn-block" href="/register"><b>REGISTER</b></a>
+                <div class="checkbox mb-3">
+                    <label class="visi">
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+                </div>
             </div>
         </div>
+
+        <!--<label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>-->
     }
 }

@@ -50,12 +50,12 @@ public class HomeController extends Controller {
             return ok(user.render(existentUser, userMod.getNombre(), userMod.getApellidos(),
             userMod.getPass(),userMod.getMail(), userMod.getDireccion(), userMod.getFono()));
         }else {
-            return ok(index.render(this.userLogin));
+            return redirect(controllers.routes.HomeController.index());
         }
     }
 
-    public Result users(){
-        return ok(users.render());
+    public Result inside(){
+        return ok(inside.render());
     }
 
     public Result update(){
