@@ -1,5 +1,6 @@
 package controllers;
 
+import Model.Aranceles;
 import Model.LoginModel;
 import Model.UserModel;
 import play.data.Form;
@@ -7,6 +8,7 @@ import play.data.FormFactory;
 import play.mvc.*;
 import views.html.*;
 import javax.inject.Inject;
+import java.util.List;
 
 
 /**
@@ -47,15 +49,18 @@ public class HomeController extends Controller {
         if (userMod != null){
             this.existentUser =formFactory.form(UserModel.class);
             session(loginUser.getName());
-            return ok(user.render(existentUser, userMod.getNombre(), userMod.getApellidos(),
-            userMod.getPass(),userMod.getMail(), userMod.getDireccion(), userMod.getFono()));
+            return redirect(controllers.routes.HomeController.inside());
+            //return ok(user.render(existentUser, userMod.getNombre(), userMod.getApellidos(),
+            //userMod.getPass(),userMod.getMail(), userMod.getDireccion(), userMod.getFono()));
         }else {
             return redirect(controllers.routes.HomeController.index());
         }
     }
 
     public Result inside(){
-        return ok(inside.render());
+        List<Aranceles> aranceles = Aranceles.matchAll();
+        Integer a =0;
+        return ok(inside.render(aranceles, a));
     }
 
     public Result update(){

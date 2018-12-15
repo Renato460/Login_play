@@ -4,6 +4,8 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
+
+GET     /inside                     controllers.HomeController.inside
 +nocsrf
 POST    /user                       controllers.HomeController.user
 

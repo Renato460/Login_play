@@ -4,7 +4,6 @@ package Model;
 import java.util.*;
 import javax.persistence.*;
 import io.ebean.*;
-
 import play.data.format.*;
 import play.data.validation.*;
 
@@ -45,10 +44,6 @@ public class UserModel extends Model {
         return null;
     }
 
-    public static List<UserModel> matchAll (){
-        List<UserModel> listUsers = UserModel.find.all();
-        return listUsers;
-    }
 
     public String getNombre() {
         return nombre;
