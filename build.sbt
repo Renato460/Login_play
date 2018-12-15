@@ -10,9 +10,13 @@ scalaVersion := "2.12.6"
 crossScalaVersions := Seq("2.11.12", "2.12.4")
 
 libraryDependencies ++= Seq(guice, evolutions, javaJdbc)
+//libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.41"
   
 // Test Database
 libraryDependencies += "com.h2database" % "h2" % "1.4.197"
+libraryDependencies += jdbc
+libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.41"
+
 
 // Testing libraries for dealing with CompletionStage...
 libraryDependencies += "org.assertj" % "assertj-core" % "3.6.2" % Test
