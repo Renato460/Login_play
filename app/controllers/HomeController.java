@@ -1,6 +1,5 @@
 package controllers;
 
-import Model.Aranceles;
 import Model.LoginModel;
 import Model.UserModel;
 import play.data.Form;
@@ -27,6 +26,7 @@ public class HomeController extends Controller {
 
     private Form<LoginModel> userLogin;
     private Form<UserModel> existentUser;
+    private LoginModel loginUser;
 
     @Inject
     private FormFactory formFactory;
@@ -42,14 +42,14 @@ public class HomeController extends Controller {
 
     public Result user() {
         Form<LoginModel> userLogin = formFactory.form(LoginModel.class).bindFromRequest();
-        LoginModel loginUser =  userLogin.get();
+        this.loginUser =  userLogin.get();
         String password = loginUser.getPassword();
         String name = loginUser.getName();
         UserModel userMod = UserModel.match(password, name);
         if (userMod != null){
             this.existentUser =formFactory.form(UserModel.class);
             session(loginUser.getName());
-            return redirect(controllers.routes.HomeController.inside());
+            return redirect(controllers.routes.HomeController.inside(name));
             //return ok(user.render(existentUser, userMod.getNombre(), userMod.getApellidos(),
             //userMod.getPass(),userMod.getMail(), userMod.getDireccion(), userMod.getFono()));
         }else {
@@ -57,18 +57,28 @@ public class HomeController extends Controller {
         }
     }
 
-    public Result inside(){
-        List<Aranceles> aranceles = Aranceles.matchAll();
-        Integer a =0;
-        return ok(inside.render(aranceles, a));
+    public Result inside(String name){
+       return ok(inside.render());
     }
 
     public Result update(){
-
-        return TODO;
+        Form<UserModel> userModel = formFactory.form(UserModel.class).bindFromRequest();
+        UserModel user = userModel.get();
+        user.update();
+        return redirect(controllers.routes.HomeController.inside(user.getNombre()));
     }
 
     public Result register(){
         return ok(register.render());
+    }
+
+    public Result logout (){
+        /*def logout = Action {
+            Redirect(routes.Application.login).withNewSession.flashing(
+                    "success" -> "You've been logged out"
+  )
+        }*/
+        session().remove(this.loginUser.getName());
+        return redirect(routes.HomeController.index());
     }
 }

@@ -1,69 +1,396 @@
-@import Model.Aranceles
-@(aranceles : List[Aranceles])(a : Integer)
-@main("Aranceles") {
+@()
 
-    <header>
-            <!-- Fixed navbar -->
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="#">Fixed navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+<!doctype html>
+<html class="no-js" lang="">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Primera página</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+            <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/normalize.css")">
+        <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">-->
+        <link rel="stylesheet" href="https://openlayers.org/en/v5.0.0/css/ol.css" type="text/css">
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/lightbox.css")">
+    </head>
+
+
+<body>
+        <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+        <!-- Add your site or application content here -->
+    <header class="site-header">
+        <div class="hero">
+            <div class="contenido-header">
+                <nav class="redes-sociales">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-youtube-square"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </nav>
+                <div class="informacion-evento">
+                    <div class="clearfix">
+                        <p class="fecha"><i class="far fa-calendar-alt"></i>25-05-2018</p>
+                        <p class="ciudad"><i class="fas fa-map-marker-alt"></i>Valparaíso</p>
+                    </div>
+                    <h1 class="nombre-sitio">GdlWebCamp</h1>
+                    <p class="slogan">la mejor conferencia de <span>diseño web</span></p>
+                </div>
+                    <!--Informacion evento-->
+            </div>
+        </div>
+            <!--div hero -->
+    </header>
+    <div class="barra">
+        <div class="contenedor clearfix">
+            <div class="logo">
+                <img src="@routes.Assets.versioned("images/logo.svg")" alt="logo camp">
+            </div>
+            <div class="menu-movil">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="navegacion-principal clearfix">
+                <a href="#">Conferencia</a>
+                <a href="#">Calendario</a>
+                <a href="#">Invitados</a>
+                <a href="@routes.HomeController.logout()">Log Out</a>
+            </nav>
+
+        </div>
+    </div>
+        <!--barra-->
+
+    <section class="seccion contenedor">
+        <h2>La mejor conferencia de diseño web en español</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra sit amet orci eget placerat. Aenean eu neque a nulla tristique cursus eget sit amet sem. Aenean aliquam finibus erat id bibendum. Nulla ac enim in sem eleifend fermentum ac in purus.
+            Duis rhoncus erat eu nibh rutrum, in pulvinar nulla ullamcorper. Nam in bibendum libero, eget blandit nibh. Fusce quis tellus vehicula justo pulvinar porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+            Suspendisse gravida tincidunt molestie. Aenean fringilla elit metus.</p>
+    </section>
+    <section class="programa">
+        <div class="contenedor-video">
+            <video muted autoplay loop poster="@routes.Assets.versioned("images/bg-talleres.jpg")">
+                <source src="@routes.Assets.versioned("video/video.mp4")" type="video/mp4">
+                <source src="@routes.Assets.versioned("video/video.webm")" type="video/webm">
+                <source src="@routes.Assets.versioned("video/video.ogv")" type="video/ogg">
+            </video>
+        </div>
+            <!--Contenido video-->
+
+        <div class="contenido-programa">
+            <div class="contenedor">
+                <div class="programa-evento">
+                    <h2>Programa del Evento</h2>
+                    <nav class="menu-programa">
+                        <a href="#talleres"><i class="fas fa-code"></i>Talleres</a>
+                        <a href="#conferencias"><i class="fas fa-comment"></i>Conferencias</a>
+                        <a href="#seminarios"><i class="fas fa-university"></i>Seminarios</a>
+                    </nav>
+
+                    <div id="talleres" class="info-curso ocultar clearfix">
+                        <div class="detalle-evento">
+                            <h3>HTML5, CSS3 Y JavaScript</h3>
+                            <p><i class="fas fa-clock"></i>16:00 hrs.</p>
+                            <p><i class="fas fa-calendar-alt"></i>10 Dic</p>
+                            <p><i class="fas fa-user-tie"></i>Optimus Prime</p>
+                        </div>
+
+                        <div class="detalle-evento">
+                            <h3>Responsive Web Design</h3>
+                            <p><i class="fas fa-clock"></i>20:00 hrs.</p>
+                            <p><i class="fas fa-calendar-alt"></i>10 Dic</p>
+                            <p><i class="fas fa-user-tie"></i>Optimus Prime</p>
+                        </div>
+                        <a href="#" class="button float-right">Ver Todos</a>
+
+                    </div>
+                        <!--talleres-->
+                    <div id="conferencias" class="info-curso ocultar clearfix">
+                        <div class="detalle-evento">
+                            <h3>Como ser freelancer</h3>
+                            <p><i class="fas fa-clock"></i>10:00 hrs.</p>
+                            <p><i class="fas fa-calendar-alt"></i>10 Dic</p>
+                            <p><i class="fas fa-user-tie"></i>Bumbulbie</p>
+                        </div>
+
+                        <div class="detalle-evento">
+                            <h3>Tecnologías del futuro</h3>
+                            <p><i class="fas fa-clock"></i>17:00 hrs.</p>
+                            <p><i class="fas fa-calendar-alt"></i>10 Dic</p>
+                            <p><i class="fas fa-user-tie"></i>Megatron</p>
+                        </div>
+                        <a href="#" class="button float-right">Ver Todos</a>
+
+                    </div>
+
+                    <div id="seminarios" class="info-curso ocultar clearfix">
+                        <div class="detalle-evento">
+                            <h3>Diseño UX/UI</h3>
+                            <p><i class="fas fa-clock"></i>17:00 hrs.</p>
+                            <p><i class="fas fa-calendar-alt"></i>11 Dic</p>
+                            <p><i class="fas fa-user-tie"></i>StarsCream</p>
+                        </div>
+
+                        <div class="detalle-evento">
+                            <h3>Clases de programación</h3>
+                            <p><i class="fas fa-clock"></i>10:00 hrs.</p>
+                            <p><i class="fas fa-calendar-alt"></i>11 Dic</p>
+                            <p><i class="fas fa-user-tie"></i>IronHide</p>
+                        </div>
+                        <a href="#" class="button float-right">Ver Todos</a>
+
+                    </div>
+                </div>
+                    <!--Programa evento-->
+
+            </div>
+                <!--Contenedor-->
+        </div>
+            <!--Contenido programa-->
+    </section>
+        <!--programa-->
+
+    <section class="invitados contenedor seccion">
+        <h2>Nuestros Invitados</h2>
+        <ul class="lista-invitados clearfix">
+            <li>
+                <div class="invitado">
+                    <img src="@routes.Assets.versioned("images/invitado1.jpg")" alt="Imagen invitado">
+                    <p>Rafael Bautista</p>
+                </div>
+            </li>
+            <li>
+                <div class="invitado">
+                    <img src="@routes.Assets.versioned("images/invitado2.jpg")" alt="Imagen invitado">
+                    <p>Shari Herrera</p>
+                </div>
+            </li>
+            <li>
+                <div class="invitado">
+                    <img src="@routes.Assets.versioned("images/invitado3.jpg")" alt="Imagen invitado">
+                    <p>Gregorio Sanchez</p>
+                </div>
+            </li>
+            <li>
+                <div class="invitado">
+                    <img src="@routes.Assets.versioned("images/invitado4.jpg")" alt="Imagen invitado">
+                    <p>Susana Rivera</p>
+                </div>
+            </li>
+            <li>
+                <div class="invitado">
+                    <img src="@routes.Assets.versioned("images/invitado5.jpg")" alt="Imagen invitado">
+                    <p>Harold Garcia</p>
+                </div>
+            </li>
+            <li>
+                <div class="invitado">
+                    <img src="@routes.Assets.versioned("images/invitado6.jpg")" alt="Imagen invitado">
+                    <p>Susan Sanchez</p>
+                </div>
+            </li>
+
+        </ul>
+    </section>
+
+    <div class="contador parallax">
+        <div class="contenedor">
+            <ul class="resumen-evento clearfix">
+                <li>
+                    <p class="numero"></p>Invitados</li>
+                <li>
+                    <p class="numero"></p>Talleres</li>
+                <li>
+                    <p class="numero"></p>Días</li>
+                <li>
+                    <p class="numero"></p>Conferencias</li>
+
+            </ul>
+        </div>
+    </div>
+
+    <section class="precios seccion">
+        <h2>Precios</h2>
+        <div class="contenedor">
+            <ul class="lista-precios clearfix">
+                <li>
+                    <div class="tabla-precio">
+                        <h3>Pase por día</h3>
+                        <p class="numero">$30</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>Bocadillos Gratis</li>
+                            <li><i class="fas fa-check"></i>Todas las Conferencias</li>
+                            <li><i class="fas fa-check"></i>Bocadillos Gratis</li>
+                        </ul>
+                        <a href="#" class="button hollow">Comprar</a>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="tabla-precio">
+                        <h3>Todos los días</h3>
+                        <p class="numero">$50</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>Bocadillos Gratis</li>
+                            <li><i class="fas fa-check"></i>Todas las Conferencias</li>
+                            <li><i class="fas fa-check"></i>Bocadillos Gratis</li>
+                        </ul>
+                        <a href="#" class="button">Comprar</a>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="tabla-precio">
+                        <h3>Pase por 2 día</h3>
+                        <p class="numero">$45</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>Bocadillos Gratis</li>
+                            <li><i class="fas fa-check"></i>Todas las Conferencias</li>
+                            <li><i class="fas fa-check"></i>Bocadillos Gratis</li>
+                        </ul>
+                        <a href="#" class="button hollow">Comprar</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <div id="map" class="map">
+
+  </div>
+
+    <section class="seccion">
+        <h2>Testimoniales</h2>
+        <div class="testomiales contenedor clearfix">
+            <div class="testimonial">
+                <blockquote>
+                    <p>Sum dolor sit amet, consectetur adipiscing elit. Sed viverra sit amet orci eget placerat. Aenean eu neque a nulla tristique cursus eget sit amet sem. Aenean aliquam finibus erat id bibendum. Nulla ac enim in sem eleifend </p>
+                    <footer class="info-testimonial clearfix">
+                        <img src="@routes.Assets.versioned("images/testimonial.jpg")" alt="imagen testimonial">
+                        <cite>Oswaldo Aponte Escobedo <span>Diseñador en @@prisma</span> </cite>
+                    </footer>
+                </blockquote>
+            </div>
+                <!--testimoniales-->
+            <div class="testimonial">
+                <blockquote>
+                    <p>Sum dolor sit amet, consectetur adipiscing elit. Sed viverra sit amet orci eget placerat. Aenean eu neque a nulla tristique cursus eget sit amet sem. Aenean aliquam finibus erat id bibendum. Nulla ac enim in sem eleifend </p>
+                    <footer class="info-testimonial clearfix">
+                        <img src="@routes.Assets.versioned("images/testimonial.jpg")" alt="imagen testimonial">
+                        <cite>Oswaldo Aponte Escobedo <span>Diseñador en @@prisma</span> </cite>
+                    </footer>
+                </blockquote>
+            </div>
+                <!--testimoniales-->
+            <div class="testimonial">
+                <blockquote>
+                    <p>Sum dolor sit amet, consectetur adipiscing elit. Sed viverra sit amet orci eget placerat. Aenean eu neque a nulla tristique cursus eget sit amet sem. Aenean aliquam finibus erat id bibendum. Nulla ac enim in sem eleifend </p>
+                    <footer class="info-testimonial clearfix">
+                        <img src="@routes.Assets.versioned("images/testimonial.jpg")" alt="imagen testimonial">
+                        <cite>Oswaldo Aponte Escobedo <span>Diseñador en @@prisma</span> </cite>
+                    </footer>
+                </blockquote>
+            </div>
+                <!--testimoniales-->
+        </div>
+    </section>
+
+    <div class="newsletter parallax">
+        <div class="contenido contenedor">
+            <p>Regístrate al newsletter:</p>
+            <h3>gdwebcamp</h3>
+            <a href="#" class="button transparente">Registro</a>
+        </div>
+            <!--CONTENIDO-->
+    </div>
+        <!--NEWSLETTER-->
+
+    <section class="seccion">
+        <h2>Faltan</h2>
+        <div class="cuenta-regresiva contenedor">
+            <ul class="clearfix">
+                <li>
+                    <p id="dias" class="numero"></p>dias</li>
+                <li>
+                    <p id="horas" class="numero"></p>horas</li>
+                <li>
+                    <p id="minutos" class="numero"></p>minutos</li>
+                <li>
+                    <p id="segundos" class="numero"></p>seg</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="contenedor clearfix">
+            <div class="footer-informacion">
+                <h3>Sobre <span>gdwebcamp</span> </h3>
+                <p>Sum dolor sit amet, consectetur adipiscing elit. Sed viverra sit amet orci eget placerat. Aenean eu neque a nulla tristique cursus eget sit amet </p>
+            </div>
+            <div class="ultimos-tweets">
+                <h3>Ultimos <span>tweets</span> </h3>
+                <ul>
+                    <li>
+            Sum dolor sit amet, consectetur adipiscing elit. Sed viverra sit amet orci
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                    <li>
+            Sum dolor sit amet, consectetur adipiscing elit. Sed viverra sit amet orci
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
+                    <li>
+            Sum dolor sit amet, consectetur adipiscing elit. Sed viverra sit amet orci
                     </li>
                 </ul>
-                <form class="form-inline mt-2 mt-md-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
             </div>
-        </nav>
-    </header>
+            <div class="menu">
+                <h3>Redes <span>Sociales</span> </h3>
+                <nav class="redes-sociales">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-youtube-square"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </nav>
+            </div>
+        </div>
+        <p class="copyright">
+      Todos los derechos Reservados GLDWEBCAMP 2016 &copy;
+        </p>
+    </footer>
+    <script src="https://openlayers.org/en/v5.0.0/build/ol.js" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/vendor/modernizr-3.6.0.min.js")"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>
+    window.jQuery || document.write('<script src="@routes.Assets.versioned("javascripts/vendor/jquery-3.3.1.min.js")"><\/script>')
+  </script>
+    <script src="@routes.Assets.versioned("javascripts/plugins.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/main.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/jquery.animateNumber.min.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/jquery.countdown.min.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/jquery.lettering.js")"></script>
+        <!--<script src="js/lightbox.js"></script>-->
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <script>
+    window.ga = function() {
+        ga.q.push(arguments)
+    };
+    ga.q = [];
+    ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto');
+    ga('send', 'pageview')
+  </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+</body>
 
-    <div class="container">
-
-        <table class="table table-responsive table-sm table-striped">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Tipo Institucion</th>
-                    <th scope="col">Nombre Inst.</th>
-                    <th scope="col">Nombre Sede</th>
-                    <th scope="col">Nombre Carrera</th>
-                    <th scope="col">Jornada</th>
-                    <th scope="col">Version</th>
-                    <th scope="col">Arancel Anual</th>
-                    <th scope="col">Arancel Ref.</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            @for(arancel <- aranceles) {
-                <tr scope="row">
-                    <td>@arancel.getTipoInstitucion</td>
-                    <td>@arancel.getNombreInst</td>
-                    <td>@arancel.getNombreSede</td>
-                    <td>@arancel.getNombreCarrera</td>
-                    <td>@arancel.getJornada</td>
-                    <td>@arancel.getVersion</td>
-                    <td>@arancel.getArancelAnual</td>
-                    <td>@arancel.getArancelRef</td>
-                </tr>
-            }
-            </tbody>
-            <tfoot>
-                <tr scope="row">
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-}
-
+</html>

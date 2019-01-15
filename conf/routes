@@ -5,7 +5,7 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
 
-GET     /inside                     controllers.HomeController.inside
+GET     /inside/:name                 controllers.HomeController.inside(name : String)
 +nocsrf
 POST    /user                       controllers.HomeController.user
 
@@ -13,7 +13,7 @@ POST     /update                    controllers.HomeController.update
 
 GET     /register                  controllers.HomeController.register
 
-GET     /users                      controllers.HomeController.inside
+GET     /logout                     controllers.HomeController.logout
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
