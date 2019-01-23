@@ -5,13 +5,19 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
 
-GET     /inside/:name                 controllers.HomeController.inside(name : String)
+GET     /inside/:name               controllers.HomeController.inside(name : String)
 +nocsrf
 POST    /user                       controllers.HomeController.user
 
+GET     /datos                      controllers.HomeController.datos
++nocsrf
 POST     /update                    controllers.HomeController.update
 
-GET     /register                  controllers.HomeController.register
+GET    /register                   controllers.HomeController.register
++nocsrf
+POST    /registerform               controllers.HomeController.registerform
+
+POST    /file                       controllers.HomeController.upload
 
 GET     /logout                     controllers.HomeController.logout
 

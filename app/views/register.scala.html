@@ -1,3 +1,79 @@
-@main("Registro"){
+@import Model._
+@import helper._
+@(newUser : Form[UserModel])
 
+@main("Registro"){
+    <div class="container">
+        <div class="row cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <header class="masthead mb-auto col-12">
+                <div class="inner">
+                    <h3 class="masthead-brand">Hello new user</h3>
+                    <nav class="nav nav-masthead justify-content-center">
+                        <a class="nav-link active" href="@routes.HomeController.inside("new")">Home</a>
+                    </nav>
+                </div>
+            </header>
+        </div>
+
+        <div class="row cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        @helper.form(action = routes.HomeController.registerform(),'class -> "user col-12"){
+            <div class="form-row">
+                <div class="col">
+                    <label class="visi" for="nombre">Nombre</label>
+                    @*helper.inputText(existentUser("nombre"), 'class -> "form-control", 'value -> nombre, '_showConstraints-> false)*@
+                    @helper.input(newUser("nombre"), '_showConstraints-> false ) { (id, name, value, placeholder) =>
+                        <input type="text" class = "form-control" name="nombre" id="nombre">
+                    }
+                </div>
+                <div class="col">
+                    <label class="visi" for="apellidos">Apellidos</label>
+                    @helper.input(newUser("apellidos"), '_showConstraints-> false ) { (id, name, value, placeholder) =>
+                        <input type="text" class = "form-control" name="apellidos" id="apellidos">
+                    }
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label class="visi" for="pass">Password</label>
+                    @helper.input(newUser("pass"), '_showConstraints-> false ) { (id, name, value, placeholder) =>
+                        <input type="text" class = "form-control" name="pass" id="pass">
+                    }
+                </div>
+                <div class="col">
+                    <label class="visi" for="mail">Email</label>
+                    @helper.input(newUser("mail"), '_showConstraints-> false ) { (id, name, value, placeholder) =>
+                        <input type="text" class = "form-control" name="mail" id="mail">
+                    }
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label class="visi" for="direccion">Dirección</label>
+                    @helper.input(newUser("direccion"), '_showConstraints-> false ) { (id, name, value, placeholder) =>
+                        <input type="text" class = "form-control" name="direccion" id="direccion">
+                    }
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label class="visi" for="fono">Teléfono</label>
+                    @helper.input(newUser("fono"), '_showConstraints-> false ) { (id, name, value, placeholder) =>
+                        <input type="text" class = "form-control" name="fono" id="fono">
+                    }
+                </div>
+            </div>
+
+            @*form(action = routes.HomeController.upload(), 'enctype -> "multipart/form-data") {
+                <p>Subir foto perfil</p>
+                <input type="file" name="picture">
+
+                <p>
+                    <button type="submit">SUBIR</button>
+                </p>
+
+            }*@
+            <button type="submit" class="btn btn-secondary">REGISTRAR</button>
+        }
+        </div>
+    </div>
 }

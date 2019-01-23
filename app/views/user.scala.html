@@ -1,17 +1,17 @@
 @import Model._
 @import helper._
-@(existentUser : Form[UserModel])(nombre : String)(apellidos : String)(pass : String)(email: String)(direccion: String)(fono: String)
+@*(existentUser : Form[UserModel])(nombre : String)(apellidos : String)(pass : String)(email: String)(direccion: String)(fono: String)*@
+    @(existentUser : Form[UserModel])(user: UserModel)
 
 @main("user"){
     <div class="container">
         <div class="row cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
             <header class="masthead mb-auto col-12">
                 <div class="inner">
-                    <h3 class="masthead-brand">@nombre</h3>
+                    <h3 class="masthead-brand">@user.getName</h3>
                     <nav class="nav nav-masthead justify-content-center">
-                        <a class="nav-link active" href="#">Home</a>
-                        <a class="nav-link" href="#">Features</a>
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link active" href="@routes.HomeController.inside(user.getName)">Home</a>
+                        <a class="nav-link" href="@routes.HomeController.logout()">Log out</a>
                     </nav>
                 </div>
             </header>
@@ -22,36 +22,53 @@
                 <div class="form-row">
                     <div class="col">
                         <label class="visi" for="nombre">Nombre</label>
-                        @helper.inputText(existentUser("nombre"), 'placeholder -> nombre, 'class -> "form-control", '_showConstraints->false)
+                        @*helper.inputText(existentUser("nombre"), 'class -> "form-control", 'value -> nombre, '_showConstraints-> false)*@
+                        @helper.input(existentUser("nombre"), '_showConstraints-> false ) { (id, name, value, placeholder) =>
+                            <input type="text" class = "form-control" name="nombre" id="nombre" value="@user.getName" placeholder="@user.getName">
+                        }
                     </div>
                     <div class="col">
                         <label class="visi" for="apellidos">Apellidos</label>
-                        @helper.inputText(existentUser("apellidos"), 'placeholder -> apellidos, 'class -> "form-control", '_showConstraints->false)
+                        @helper.input(existentUser("apellidos"), '_showConstraints-> false ) { (id, name, value, placeholder) =>
+                            <input type="text" class = "form-control" name="apellidos" id="apellidos" value="@user.getApellidos" placeholder="@user.getApellidos">
+                        }
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         <label class="visi" for="pass">Password</label>
-                        @helper.inputText(existentUser("pass"), 'placeholder -> pass, 'class -> "form-control")
+                        @*helper.inputText(existentUser("pass"), 'placeholder -> pass, 'value -> pass, 'class -> "form-control")*@
+                        @helper.input(existentUser("pass"), '_showConstraints-> false ) { (id, name, value, placeholder) =>
+                            <input type="text" class = "form-control" name="pass" id="pass" value="@user.getPass" placeholder="@user.getPass">
+                        }
                     </div>
                     <div class="col">
                         <label class="visi" for="mail">Email</label>
-                        @helper.inputText(existentUser("mail"), 'placeholder -> email, 'class -> "form-control", '_showConstraints->false)
+                        @*helper.inputText(existentUser("mail"), 'placeholder -> email, 'value -> email, 'class -> "form-control", '_showConstraints->false)*@
+                        @helper.input(existentUser("mail"), '_showConstraints-> false ) { (id, name, value, placeholder) =>
+                            <input type="email" class = "form-control" name="mail" id="mail" value="@user.getMail" placeholder="@user.getMail">
+                        }
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         <label class="visi" for="direccion">Dirección</label>
-                        @helper.inputText(existentUser("direccion"), 'placeholder -> direccion, 'class -> "form-control")
+                        @*helper.inputText(existentUser("direccion"), 'placeholder -> direccion, 'value -> direccion, 'class -> "form-control")*@
+                        @helper.input(existentUser("direccion"), '_showConstraints-> false ) { (id, name, value, placeholder) =>
+                            <input type="text" class = "form-control" name="direccion" id="direccion" value="@user.getDireccion" placeholder="@user.getDireccion">
+                        }
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         <label class="visi" for="fono">Teléfono</label>
-                        @helper.inputText(existentUser("fono"), 'placeholder -> fono, 'class -> "form-control")
+                        @*helper.inputText(existentUser("fono"), 'placeholder -> fono, 'value -> fono, 'class -> "form-control")*@
+                        @helper.input(existentUser("fono"), '_showConstraints-> false ) { (id, name, value, placeholder) =>
+                            <input type="text" class = "form-control" name="fono" id="fono" value="@user.getFono" placeholder="@user.getFono">
+                        }
                     </div>
                 </div>
-                <button type="submit" class="btn btn-secondary">ACTUALIZAR</button>
+                <button type="submit" class="btn btn-secondary">Actualizar</button>
             }
         </div>
 </div>

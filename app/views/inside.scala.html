@@ -1,4 +1,4 @@
-@()
+@(name: String)
 
 <!doctype html>
 <html class="no-js" lang="">
@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Primera página</title>
+        <title>User Pagina</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -65,7 +65,7 @@
             <nav class="navegacion-principal clearfix">
                 <a href="#">Conferencia</a>
                 <a href="#">Calendario</a>
-                <a href="#">Invitados</a>
+                <a href="@routes.HomeController.datos()">Usuario</a>
                 <a href="@routes.HomeController.logout()">Log Out</a>
             </nav>
 

@@ -7,7 +7,6 @@ import play.data.FormFactory;
 import play.mvc.*;
 import views.html.*;
 import javax.inject.Inject;
-import java.util.List;
 
 
 /**
@@ -27,6 +26,7 @@ public class HomeController extends Controller {
     private Form<LoginModel> userLogin;
     private Form<UserModel> existentUser;
     private LoginModel loginUser;
+    private UserModel userMod;
 
     @Inject
     private FormFactory formFactory;
@@ -40,36 +40,51 @@ public class HomeController extends Controller {
         return ok(index.render(userLogin));
     }
 
+
     public Result user() {
         Form<LoginModel> userLogin = formFactory.form(LoginModel.class).bindFromRequest();
         this.loginUser =  userLogin.get();
         String password = loginUser.getPassword();
         String name = loginUser.getName();
-        UserModel userMod = UserModel.match(password, name);
+        this.userMod = UserModel.match(password, name);
         if (userMod != null){
-            this.existentUser =formFactory.form(UserModel.class);
             session(loginUser.getName());
             return redirect(controllers.routes.HomeController.inside(name));
-            //return ok(user.render(existentUser, userMod.getNombre(), userMod.getApellidos(),
+            //return ok(user.render(existentUser, userMod.getName(), userMod.getApellidos(),
             //userMod.getPass(),userMod.getMail(), userMod.getDireccion(), userMod.getFono()));
         }else {
             return redirect(controllers.routes.HomeController.index());
         }
     }
 
+    public Result datos (){
+        this.existentUser =formFactory.form(UserModel.class);
+        this.userMod = UserModel.match(loginUser.getPassword(), loginUser.getName());
+        return ok(user.render(existentUser, userMod));
+    }
+
     public Result inside(String name){
-       return ok(inside.render());
+       return ok(inside.render(name));
     }
 
     public Result update(){
-        Form<UserModel> userModel = formFactory.form(UserModel.class).bindFromRequest();
-        UserModel user = userModel.get();
-        user.update();
-        return redirect(controllers.routes.HomeController.inside(user.getNombre()));
+        UserModel user = formFactory.form(UserModel.class).bindFromRequest().get();
+        UserModel upUsuario = UserModel.find.byId(user.getPass());
+        upUsuario = user;
+        upUsuario.update();
+        return ok(inside.render(user.getName()));
     }
 
     public Result register(){
-        return ok(register.render());
+        Form<UserModel> newUser = formFactory.form(UserModel.class);
+        return ok(register.render(newUser));
+    }
+
+    public Result registerform (){
+        UserModel newUser = formFactory.form(UserModel.class).bindFromRequest().get();
+        newUser.save();
+        this.userLogin = formFactory.form(LoginModel.class);
+        return ok(index.render(userLogin));
     }
 
     public Result logout (){
@@ -78,7 +93,11 @@ public class HomeController extends Controller {
                     "success" -> "You've been logged out"
   )
         }*/
-        session().remove(this.loginUser.getName());
+        session().remove(this.userMod.getName());
         return redirect(routes.HomeController.index());
+    }
+
+    public Result upload(){
+        return TODO;
     }
 }

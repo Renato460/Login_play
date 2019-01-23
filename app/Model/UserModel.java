@@ -4,7 +4,6 @@ package Model;
 import java.util.*;
 import javax.persistence.*;
 import io.ebean.*;
-import play.data.format.*;
 import play.data.validation.*;
 
 @Entity
@@ -37,7 +36,7 @@ public class UserModel extends Model {
     public static UserModel match (String pass, String name){
         List<UserModel> users = UserModel.find.all();
         for (UserModel user : users) {
-            if (pass.equals(user.getPass()) && name.equals(user.getNombre())){
+            if (pass.equals(user.getPass()) && name.equals(user.getName())){
                 return user;
             }
         }
@@ -45,7 +44,7 @@ public class UserModel extends Model {
     }
 
 
-    public String getNombre() {
+    public String getName() {
         return nombre;
     }
 

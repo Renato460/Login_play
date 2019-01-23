@@ -16,7 +16,7 @@
                     @helper.inputPassword(userLogin("password"),'_label->"sr-only", 'placeholder -> "Password", 'class->"form-control")
 
                 <button class="btn btn-secondary btn-lg btn-block" type="submit"><b>LOGIN</b></button>
-                <a class="btn btn-lg btn-outline-secondary btn-block" href="/register"><b>REGISTER</b></a>
+                <a class="btn btn-lg btn-outline-secondary btn-block" href="@routes.HomeController.register()"><b>REGISTER</b></a>
                 <div class="checkbox mb-3">
                     <label class="visi">
                         <input type="checkbox" value="remember-me"> Remember me
